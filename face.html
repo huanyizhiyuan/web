@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>首页</title>
+<script src="./js/echarts.min.js"></script> 
+<script src="../project/css/header.css"></script>
+<script src="../project/css/base.css"></script>
+<script src="../project/css/box.css"></script>
+<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+<link rel="stylesheet" type="text/css" href="css/default.css">
+<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css"/>-->
+
+<style>
+body{
+	background: url("./img/主要背景.png");
+}
+.content {  
+    width: 95%; /* 设置内容宽度为视窗宽度的90% */  
+    max-width: 90vw; /* 可选：确保在窄屏幕下内容不会超过视窗宽度的90% */  
+    margin-left: auto; /* 水平居中，与margin-right一起使用 */  
+    margin-right: auto; /* 水平居中，与margin-left一起使用 */  
+    /* 你可以根据需要添加padding, border等样式 */  
+}
+	.sl{
+		padding-top:10px;
+		display:flex;
+		flex-direction: row;
+		align-items: baseline;
+		justify-content: space-between;
+		padding-right:30px;
+	}
+	.sp{
+		font-family: "三级加粗-正文-三号", sans-serif;
+		font-size: 1.5em;
+	}
+	.zxt {
+        width: 1280px;
+        height: 300px;
+        /* position: relative; */
+    }
+    
+    .small {
+        width: 1280px;
+        height: 100px;
+        /* position: absolute; */
+    }
+    main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 60vh;
+        background-color: rgba(255, 255, 255, 0);
+      }
+      canvas {
+        border-radius: 8px;
+        box-shadow: 0 018px rgba(0, 0, 0, 0.2);
+      }
+	  .ciyunwenzi{
+		width:80px;
+		height:80px;
+	  }
+	  .bt{
+		font-family: "主标题-二号", sans-serif;
+      	font-size: 3.5em;
+	  }
+	  .dahan{
+		font-family: '主标题备注-二级-三号', sans-serif;
+		font-size: 1.5em;
+		padding-right:40px;
+	}
+	.logo {
+		cursor: pointer;
+		order: 4;
+		margin-left: auto;
+		margin-right: 5%;
+		width: 120px;
+		height: 40px;
+	}
+	.timeline-link {
+		cursor: pointer;
+	}
+	.direction{
+		position: sticky;
+		z-index: 100;
+		top:0;
+		background-color: #e8e5de;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		/* margin-left: 5%;
+		margin-right: 5%; */
+		padding-left: 10%;
+		padding-right: 5%;
+		padding-top: 0.5%;
+		padding-bottom: 0.5%;
+		/* background-color: aliceblue; */
+		/* border: 2px solid; 边框宽度为1像素，实线，红色 */
+		box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+	}
+	.nav_links {
+	  list-style: none;
+	  padding: 10px;
+}
+.nav_links li {
+  display: inline-block;
+  padding: 0px 40px;
+  font-family: "主标题备注-二级-三号", sans-serif;
+  font-size:30px;
+}
+.ax {
+  font-family: "主标题备注-二级-三号", sans-serif;
+  /* font-weight: 500; */
+  font-size: 30px;
+  /*color: #edf0f1;*/
+  color: #000000;
+  text-decoration: none;
+  font-style: normal;
+}
+.nav_links li .ax {
+  transition: all 0.3s ease 0s;
+}
+
+.nav_links li .ax:hover {
+  color: #50a1b5;
+}
+
+	
+</style>
+<!-- 目标页面 (target-page.html) -->  
+<script>  
+	// 假设您有时间轴节点，每个节点有一个唯一的标识符  
+// 定义包含时间轴节点ID的数组  
+const timelineNodesIds = ['a','b', 'c', 'd', 'e', 'f', 'g'];  
+  
+// 当前显示的节点ID  
+let currentNodeId = timelineNodesIds[0];  
+  
+// 显示特定时间轴节点  
+function showTimelineNode(nodeId) {  
+    // 隐藏所有节点  
+    timelineNodesIds.forEach(id => {  
+        const node = document.getElementById(id);  
+        if (node) {  
+            node.style.display = 'none';  
+        }  
+    });  
+      
+    // 显示指定的节点  
+    const node = document.getElementById(nodeId);  
+    if (node) {  
+        node.style.display = 'block';  
+          
+        // 更新浏览器历史记录  
+        history.pushState({ timelineNode: nodeId }, '', '#' + nodeId);  
+    }  
+      
+    // 更新当前节点ID  
+    currentNodeId = nodeId;  
+}  
+  
+// 为时间轴节点添加事件监听器  
+timelineNodesIds.forEach(id => {  
+    const nodeElement = document.getElementById(id);  
+    if (nodeElement) {  
+        nodeElement.addEventListener('click', () => {  
+            showTimelineNode(id);  
+        });  
+    }  
+});  
+  
+// 监听浏览器的popstate事件  
+window.addEventListener('popstate', (event) => {  
+    const state = event.state;  
+    if (state && state.timelineNode) {  
+        const nodeId = state.timelineNode;  
+        showTimelineNode(nodeId);  
+    }  
+});
+	</script>
+</head>
+
+<body>
+	<div class="direction">
+		<img src="./img/tbtbtb.png" class="logo" alt="logo" />
+		<nav>
+			<ul class="nav_links">
+				<li class="nav_li" style="background: url('./img/header边框.png');">
+					<a href="http://localhost:63342/wywywywy/timeline/face.html">成年累月</a>
+				</li>
+				<li class="nav_li" style="background: url('./img/header边框.png');">
+					<a href="http://localhost:5173/#/Cluster_diagram">由此及彼</a>
+				</li>
+				<li class="nav_li" style="background: url('./img/header边框.png');">
+					<a href="http://localhost:63342/wywywywy/project/index.html">返回首页</a>
+				</li>
+			</ul>
+		</nav>
+	  </div>
+	<div class="content">
+	<section class="cd-horizontal-timeline">
+		<div class="timeline" >
+		<div class="events-wrapper">
+			<div class="events" style="font-family: '三级加粗-正文-三号', sans-serif;font-size:10px;font-weight:bold;">
+				<ol>
+					<li ><a href="#0" data-date="16/01/2014" class="selected">数学萌芽时期</a></li>
+					
+					<li><a href="#1" data-date="20/04/2014">体系形成时期</a></li>
+					
+					<li ><a href="#2" data-date="09/07/2014">数学发展时期</a></li>
+					
+					<li><a href="#3" data-date="15/10/2014">数学繁荣时期</a></li>
+					<li><a href="#4" data-date="27/10/2014"></a></li>
+					<li><a href="#5" data-date="10/01/2015">数学衰退时期</a></li>
+					
+					<li><a href="#6" data-date="03/03/2015">未完待续...</a></li>
+				</ol>
+		
+				<span class="filling-line" aria-hidden="true"></span>
+			</div> <!-- .events -->
+		</div> <!-- .events-wrapper -->
+					
+				<ul class="cd-timeline-navigation">
+					<li><a href="#0" class="prev inactive">Prev</a></li>
+					<li><a href="#0" class="next">Next</a></li>
+				</ul> <!-- .cd-timeline-navigation -->
+		</div> <!-- .timeline -->
+
+	<div class="events-content">
+		<ol>
+			<li class="selected" data-date="16/01/2014" id="">
+				<div style="display:flex;flex-direction: row;justify-content: space-between;">
+					<div style="height:80vh;width:30%;box-shadow: rgba(0, 0, 0, 0.15) 2.4px 0px 0px;">
+						<div id="000" style="height:300px;"></div>
+						<script src="./js/wdjwdj.js"></script>
+						<em>春秋战国时期</em>
+						<div class="sl">
+							<p><a href="./html/kgj.html">《考工记》</a></p>
+							<p>作者不详</p>
+						</div>
+						<!-- <div style="height:40px;"></div> -->
+						<em>秦汉时期</em>
+						<div class="sl">
+							<p><a href="./html/-2史记夏本纪.html">《史记·夏本纪》</a></p>
+							<p>司马迁</p>
+						</div>
+					</div>
+					<div style="width:5%"></div>
+					<div style="width:65%;display:flex;flex-direction: column;">
+						<em style="display:flex;justify-content: flex-end;">数学萌芽时期</em>
+						<p style="padding-top:10px;text-indent: 2em;">我们国家源远流长、起源甚早，在祖先从蛮荒走向开化的路途中，少不了对于数字和形状的研究与琢磨。早在殷商时期（公元前1400——公元前1100年）挖掘的甲骨文中，就已经出现了13种计数单字。从“一”到“三万”，其中已经蕴含了十进制的规则。而对于几何知识来说，根据当时的传说，伏羲创造了“规”用来画圆，“矩”用来画方形。后来大禹治水之时，便左准绳、右规矩的来规划方向和形状。人们后来用这些工具丈量土地、测算山谷、计算产出、制定历法。商朝之后的周朝，更是把数学作为了名门贵族必须学习的六艺之一。</p>
+						<p style="padding-top:10px;text-indent: 2em;">到了有史可追的春秋时期，皇权衰弱、诸王兴起。生产力的不断提高导致百姓必须要掌握一定的数学知识才能更好的为官、从商、务农。这时，大量的私人学塾出现。最晚在春秋末年人们就已经普遍的掌握了十进制的计数方法，并且可以轻易使用“算筹”这种工具进行运算。甚至人们已经熟练运用起了九九乘法口诀、整数四则运算和分数。这在世界史的同时期都是领先于人的。</p>
+						</div>
+				</div>
+			</li>
+
+			
+			<li data-date="20/04/2014" id="1">
+				<div style="height:80vh;display:flex;flex-direction: row;justify-content: space-between;">
+						<div style="width:30%;box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;">
+							<div id="111" style="height:300px;"></div>
+							<script src="./js/wdjwdj copy.js"></script>
+							<em>秦汉时期</em>
+							<div class="sl">
+								<p><a href="./html/-3周髀算经.html">《周髀算经》</a></p>
+								<p>赵爽[做注]</p>
+							</div>
+							
+							<div class="sl">
+								<p><a href="./html/-6算罔论.html">《算罔论》</a></p>
+								<p>张衡</p>
+							</div>
+							
+						</div>
+						<div style="width:5%"></div>
+						<div style="width:65%;display:flex;flex-direction: column;">
+							<em style="display:flex;justify-content: flex-end;">体系形成时期</em>
+							<p style="padding-top:10px;text-indent: 2em;">秦汉是封建社会的上升时期，经济和文化均得到迅速发展。中国古代数学体系正是形成于这个时期，它的主要标志是算术已成为一个专门的学科，以及以《九章算术》为代表的数学著作的出现。《九章算术》还在隋唐时期曾传到朝鲜、日本，并成为这些国家当时的数学教科书。它的一些成就如十进位值制、今有术、盈不足术等还传到印度和阿拉伯，并通过印度、阿拉伯传到欧洲，促进了世界数学的发展。</p>
+							<p style="padding-top:10px;text-indent: 2em;">在这一阶段，九九乘法表、整数运算和分数也开始被使用。同时古人们更加强调数学的应用性，重于与当时生产、生活密切相结合的数学问题及其解法。</p>
+							</div>
+	
+					</div>
+			</li>
+
+			
+
+
+
+			<li data-date="09/07/2014">
+				<div style="display:flex;flex-direction: row;justify-content: space-between;">
+						<div style="width:30%;box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;">
+							<div id="222" style="height:300px;"></div>
+							<script src="./js/wdjwdj copy 2.js"></script>
+							<em>魏晋南北朝</em>
+							<div class="sl">
+								<p><a href="./html/-4勾股圆方图注.html">《勾股圆方图注》</a></p>
+								<p>刘徽</p>
+							</div>
+							<div class="sl">
+								<p><a href="./html/-5九章算术.html">《九章算术》</a></p>
+								<p>刘徽[做注]</p>
+							</div>
+							<div class="sl">
+								<p><a href="./html/-7五经算术.html">《五经算术》</a></p>
+								<p>甄鸾</p>
+							</div>
+							<div class="sl">
+								<p><a href="./html/-8五曹算经.html">《五曹算经》</a></p>
+								<p>甄鸾</p>
+							</div>
+							<div class="sl">
+								<p><a href="./html/-9缀术.html">《缀术》</a></p>
+								<p>祖冲之</p>
+							</div>
+							<div class="sl">
+								<p><a href="./html/-10张丘建算经.html">《张丘建算经》</a></p>
+								<p>张丘建</p>
+							</div>
+							<div style="height:40px;"></div>
+							<em>唐朝</em>
+							<div class="sl">
+								<p><a href="./html/-11缉古算经.html">《缉古算经》</a></p>
+								<p>王孝通</p>
+							</div>
+						</div>
+						<div style="width:5%"></div>
+						<div style="width:65%;display:flex;flex-direction: column;">
+							<em style="display:flex;justify-content: flex-end;">数学发展时期</em>
+							<p style="padding-top:10px;text-indent: 2em;">在这一数学发展阶段，社会环境极大地促进了我国数学的发展。尤其是在隋唐时期，我国更是在国子监设立算学馆，设有算学博士和助教；并编纂注释《算经十书》，作为算学馆学生用的课本；算学家还创立了二次函数的内插法以用于历法</p>
+							<p style="padding-top:10px;text-indent: 2em;">同时在国家政策层面，隋炀帝大兴土木，客观上促进了数学的发展。隋唐时期是中国封建官僚制度建立时期，随着科举制度与国子监制度的确立，数学教育有了长足的发展。</p>
+							<p style="padding-top:10px;text-indent: 2em;">在经济层面，唐中期以后，商业繁荣，数字计算增多，迫切要求改革计算方法，从《新唐书》等文献留下来的算书书目，可以看出这次算法改革主要是简化乘、除算法，唐代的算法改革使乘除法可以在一个横列中进行运算，它既适用于筹算，也适用于珠算。</p>
+							</div>
+	
+					</div>
+			</li>
+
+<!--		无用！！！！！！！！！！！！！！！！！！！！-->
+			<li data-date="15/10/2014">
+				<div style="display:flex;flex-direction: row;justify-content: space-between;">
+						<div style="width:30%;box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;">
+							<div id="333" style="height:300px;"></div>
+							<script src="./js/wdjwdj copy 3.js"></script>
+							<em>南宋</em>
+							<div class="sl">
+								<p><a href="./html/-12数书九章.html">《数书九章》</a></p>
+								<p>秦九韶</p>
+							</div>
+							<div class="sl">
+								<p><a href="./html/-13杨辉算法.html">《杨辉算法》</a></p>
+								<p>杨辉</p>
+							</div>
+							<!-- <div style="height:40px;"></div> -->
+							<em>北宋</em>
+							<div class="sl">
+								<p><a href="./html/-14梦溪笔谈.html">《梦溪笔谈》</a></p>
+								<p>沈括</p>
+							</div>
+							<div class="sl">
+								<p><a href="./html/-15黄帝九章算经细草.html">《皇帝九章算经细草》</a></p>
+								<p>贾宪</p>
+							</div>
+							<div class="sl">
+								<p><a href="./html/-16议古根源.html">《议古根源》</a></p>
+								<p>刘益</p>
+							</div>
+							<em>元朝</em>
+							<div class="sl">
+								<p><a href="./html/-17益古演段.html">《益古演段》</a></p>
+								<p>李冶</p>
+							</div>
+							<div class="sl">
+								<p><a href="./html/-18测圆海镜.html">《测圆海镜》</a></p>
+								<p>李冶</p>
+							</div>
+							<div class="sl">
+								<p><a href="./html/-19算学启蒙.html">《算学启蒙》</a></p>
+								<p>朱世杰</p>
+							</div>
+							<div class="sl">
+								<p><a href="./html/-20四元玉鉴.html">《四元玉鉴》</a></p>
+								<p>朱世杰</p>
+							</div>
+							<div class="sl">
+								<p><a href="./html/-21授时历.html">《授时历》</a></p>
+								<p>郭守敬</p>
+							</div>
+						</div>
+						<div style="width:5%"></div>
+						<div style="width:65%;display:flex;flex-direction: column;">
+							<em style="display:flex;justify-content: flex-end;">数学繁荣时期</em>
+							<p style="padding-top:10px;text-indent: 2em;">960年，北宋的建立结束了五代十国割据的局面。北宋的农业、手工业、商业空前繁荣，科学技术突飞猛进，火药、指南针、印刷术三大发明就是在这种经济高涨的情况下得到广泛应用。</p>
+							<p style="padding-top:10px;text-indent: 2em;">中国古代计算技术改革的高潮也是出现在宋元时期。宋元明的历史文献中载有大量这个时期的实用算术书目，其数量远比唐代为多，改革的主要内容仍是乘除法。与算法改革的同时，穿珠算盘在北宋可能已出现。</p>
+							<p style="padding-top:10px;text-indent: 2em;">宋元数学家都在不同程度上反对理学家的象数神秘主义。例如秦九韶虽曾主张数学与道学同出一源，但他后来认识到，“通神明”的数学是不存在的，只有“经世务类万物”的数学；朱世杰在《四元玉鉴》序文中提出的“用假象真，以虚问实”则代表了高度抽象思维的思想方法；杨辉对纵横图结构进行研究，揭示出洛书的本质，有力地批判了象数神秘主义。所有这些，无疑是促进数学发展的重要因素。</p>
+							<p style="padding-top:10px;text-indent: 2em;">宋元数学的繁荣，是社会经济发展和科学技术发展的必然结果，是传统数学发展的必然结果。此外，数学家们的科学思想与数学思想也是十分重要的。宋元数学家都在不同程度上反对理学家的象数神秘主义。李冶曾批评朱熹著作，说它不通的地方很多。他指出，说数学难认识是可以的，但说数学不能认识就不对；他认为数学来源于自然界，“苟能推自然之理”就可以“明自然之数”。秦九韶虽曾主张数学与道学同出一源，但他后来也认识到，“通神明”的数学是不存在的，只有“经世务类万物”的数学。</p>
+						
+							</div>
+	
+					</div>
+				</li>
+
+			<li data-date="27/10/2014">
+				<div style="display:flex;flex-direction: row;justify-content: space-between;">
+					<div style="width:30%;box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;">
+						<div id="332" style="height:300px;"></div>
+						<script src="./js/wdjwdj copy 32.js"></script>
+						<em>南宋</em>
+							<div class="sl">
+								<p><a href="./html/-12数书九章.html">《数书九章》</a></p>
+								<p>秦九韶</p>
+							</div>
+							<div class="sl">
+								<p><a href="./html/-13杨辉算法.html">《杨辉算法》</a></p>
+								<p>杨辉</p>
+							</div>
+							<!-- <div style="height:40px;"></div> -->
+							<em>北宋</em>
+							<div class="sl">
+								<p><a href="./html/-14梦溪笔谈.html">《梦溪笔谈》</a></p>
+								<p>沈括</p>
+							</div>
+							<div class="sl">
+								<p><a href="./html/-15黄帝九章算经细草.html">《皇帝九章算经细草》</a></p>
+								<p>贾宪</p>
+							</div>
+							<div class="sl">
+								<p><a href="./html/-16议古根源.html">《议古根源》</a></p>
+								<p>刘益</p>
+							</div>
+							<em>元朝</em>
+							<div class="sl">
+								<p><a href="./html/-17益古演段.html">《益古演段》</a></p>
+								<p>李冶</p>
+							</div>
+							<div class="sl">
+								<p><a href="./html/-18测圆海镜.html">《测圆海镜》</a></p>
+								<p>李冶</p>
+							</div>
+							<div class="sl">
+								<p><a href="./html/-19算学启蒙.html">《算学启蒙》</a></p>
+								<p>朱世杰</p>
+							</div>
+							<div class="sl">
+								<p><a href="./html/-20四元玉鉴.html">《四元玉鉴》</a></p>
+								<p>朱世杰</p>
+							</div>
+							<div class="sl">
+								<p><a href="./html/-21授时历.html">《授时历》</a></p>
+								<p>郭守敬</p>
+							</div>
+					</div>
+					<div style="width:5%"></div>
+					<div style="width:65%;display:flex;flex-direction: column;">
+						<em style="display:flex;justify-content: flex-end;">数学繁荣时期</em>
+							<p style="padding-top:10px;text-indent: 2em;">960年，北宋的建立结束了五代十国割据的局面。北宋的农业、手工业、商业空前繁荣，科学技术突飞猛进，火药、指南针、印刷术三大发明就是在这种经济高涨的情况下得到广泛应用。</p>
+							<p style="padding-top:10px;text-indent: 2em;">中国古代计算技术改革的高潮也是出现在宋元时期。宋元明的历史文献中载有大量这个时期的实用算术书目，其数量远比唐代为多，改革的主要内容仍是乘除法。与算法改革的同时，穿珠算盘在北宋可能已出现。</p>
+							<p style="padding-top:10px;text-indent: 2em;">宋元数学家都在不同程度上反对理学家的象数神秘主义。例如秦九韶虽曾主张数学与道学同出一源，但他后来认识到，“通神明”的数学是不存在的，只有“经世务类万物”的数学；朱世杰在《四元玉鉴》序文中提出的“用假象真，以虚问实”则代表了高度抽象思维的思想方法；杨辉对纵横图结构进行研究，揭示出洛书的本质，有力地批判了象数神秘主义。所有这些，无疑是促进数学发展的重要因素。</p>
+							<p style="padding-top:10px;text-indent: 2em;">宋元数学的繁荣，是社会经济发展和科学技术发展的必然结果，是传统数学发展的必然结果。此外，数学家们的科学思想与数学思想也是十分重要的。宋元数学家都在不同程度上反对理学家的象数神秘主义。李冶曾批评朱熹著作，说它不通的地方很多。他指出，说数学难认识是可以的，但说数学不能认识就不对；他认为数学来源于自然界，“苟能推自然之理”就可以“明自然之数”。秦九韶虽曾主张数学与道学同出一源，但他后来也认识到，“通神明”的数学是不存在的，只有“经世务类万物”的数学。</p>
+						</div>
+
+				</div>
+				</li>
+
+			<li data-date="10/01/2015">
+					<div style="display:flex;flex-direction: row;justify-content: space-between;">
+							<div style="width:30%;box-shadow: rgba(0, 0, 0, 0.15) 2.4px 0 0 0;">
+								<div id="444" style="height:300px;"></div>
+								<script src="./js/wdjwdj copy 4.js"></script>
+								<em>明朝</em>
+								
+								<div class="sl">
+									<p><a href="./html/-22几何原本译本.html">《几何原本译本》</a></p>
+									<p>徐光启[译]</p>
+								</div>
+								<div class="sl">
+									<p><a href="./html/-23大测.html">《大测》</a></p>
+									<p>邓玉函[传]</p>
+								</div>
+								<div class="sl">
+									<p><a href="./html/-24圜容较义.html">《圜容较义》</a></p>
+									<p>李之藻</p>
+								</div>
+								<div class="sl">
+									<p><a href="./html/-25同文算指.html">《同文算指》</a></p>
+									<p>李之藻</p>
+								</div>
+								<div class="sl">
+									<p><a href="./html/-26测量全义.html">《测量全义》</a></p>
+									<p>汤若望等[传]</p>
+								</div>
+								<div class="sl">
+									<p><a href="./html/-27崇祯历书.html">《崇祯历书》</a></p>
+									<p>汤若望[传]</p>
+								</div>
+								<!-- <div style="height:60px;"></div> -->
+								<em>清朝</em>
+								<div class="sl">
+									<p><a href="./html/-28数度衍.html">《数度衍》</a></p>
+									<p>方中通</p>
+								</div>
+								<div class="sl">
+									<p><a href="./html/-29割圆八线表.html">《割圆八线表》</a></p>
+									<p>梅文鼎</p>
+								</div>
+								<div class="sl">
+									<p><a href="./html/-30梅氏丛书辑要.html">《梅氏丛书辑要》</a></p>
+									<p>梅文鼎</p>
+								</div>
+								<div class="sl">
+									<p><a href="./html/-31历学会通.html">《历学会通》</a></p>
+									<p>薛凤祚</p>
+								</div>
+								
+								<div class="sl">
+									<p><a href="./html/-32数理精蕴.html">《数理精蕴》</a></p>
+									<p>梅珏成</p>
+								</div>
+								<div class="sl">
+									<p><a href="./html/-33畴人传.html">《畴人传》</a></p>
+									<p>阮元</p>
+								</div>
+								<div class="sl">
+									<p><a href="./html/-34衡斋算学.html">《衡斋算学》</a></p>
+									<p>汪莱</p>
+								</div>
+								<div class="sl">
+									<p><a href="./html/-35垛积比类.html">《垛积比类》</a></p>
+									<p>李善兰</p>
+								</div>
+							</div>
+							<div style="width:5%"></div>
+							<div style="width:65%;display:flex;flex-direction: column;">
+								<em style="display:flex;justify-content: flex-end;">数学衰退时期</em>
+								<p style="padding-top:10px;text-indent: 2em;">这一时期，受社会环境影响，我国数学发展速度较之前相比慢了许多，以学习翻译外来著作为主。</p>
+								<p style="padding-top:10px;text-indent: 2em;">我国从明代开始步入封建时期的晚期，16世纪末以后，西方初等数学陆续传入中国，使中国数学研究出现一个中西融合贯通的局面；这一时期指十四世纪中叶明王朝建立到明末的1582年。数学除珠算外出现全面衰弱的局面，当中涉及到中算的局限、十三世纪的考试制度中已删减数学内容、明代大兴八段考试制度等复杂的问题。从明初到明中叶，商品经济有所发展，和这种商业发展相适应的是珠算的普及。鸦片战争以后，近代数学开始传入中国，中国数学便转入一个以学习西方数学为主的时期；到19世纪末20世纪初，近代数学研究才真正开始。</p>
+								</div>
+		
+						</div>
+					</li>
+			
+
+			<li data-date="03/03/2015">
+				<div style="display:flex;flex-direction: column;justify-content: flex-end;align-items: self-end;">
+					<em >寄蜉蝣于天地，渺沧海之一粟。</em>
+					<p style="padding-top:10px;text-indent: 2em;font-size: 30px;">--苏轼</p>
+				</div>
+				
+				<!-- <img src="./img/water-373780_1280.jpg" alt="img03"> -->
+			</li>
+		</ol>
+	</div> <!-- .events-content -->
+</section>
+
+<script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
+<script src="js/jquery.mobile.custom.min.js"></script>
+<script src="js/main.js"></script>
+
+<!--页下注-->
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p></p>
+<p></a></p>
+</div>
+</div>
+</body>
+</html>
