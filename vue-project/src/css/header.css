@@ -1,0 +1,67 @@
+/* @font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../font/font1.ttf) format("truetype");
+} */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10%;
+  background-color: #e8e5de;
+  /* border: 2px solid; 边框宽度为1像素，实线，红色 */
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  /*box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;*/
+}
+li,
+a {
+  font-family: "主标题备注-二级-三号", sans-serif;
+  /* font-weight: 500; */
+  font-size: 30px;
+  /*color: #edf0f1;*/
+  color: #383838;
+  text-decoration: none;
+  font-style: normal;
+}
+.logo {
+  cursor: pointer;
+  order: 4;
+  margin-left: auto;
+  width: 120px;
+  height: 40px;
+}
+
+/*.container {*/
+/*    max-width: 960px;*/
+/*    width: 100%;*/
+/*    height:100%;*/
+/*    padding-right: 15px;*/
+/*    padding-left: 15px;*/
+/*    margin-right: auto;*/
+/*    margin-left: auto;*/
+/*    border: 1px solid yellowgreen; !* 边框宽度为1像素，实线，红色 *!*/
+/*}*/
+
+.nav_links {
+  list-style: none;
+  padding: 10px;
+}
+.nav_links li {
+  display: inline-block;
+  padding: 0px 40px;
+  background: url('../img/math_img/header边框.png');
+  /* font-family: "主标题备注-二级-三号", sans-serif; */
+}
+/* .nav_links li:nth-child(1){
+      text-decoration: underline;
+  } */
+
+.nav_links li a {
+  transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover {
+  color: #50a1b5;
+}

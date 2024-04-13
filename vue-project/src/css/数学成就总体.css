@@ -1,0 +1,284 @@
+.数学领域1{
+    position:relative;
+    top:27%;
+    left:21.5%;
+    transform: translate(-50%, 0); /* 通过平移调整位置 */
+
+    width:200px;
+    height:200px;
+    /* 将整个盒子设置为圆形,隐藏超出圆形的内容 */
+    border-radius: 50%;
+    /*
+    border-radius: 50%;
+    overflow: hidden;
+    */
+    /*box-shadow: 0 0 15px rgb(0,0,0);*/
+    /*border: 1px solid black;*/
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+.数学领域1适配图片1{
+    position: absolute;
+    width: 100%; /* 设置宽度为100% */
+    height: 100%; /* 设置高度为100% */
+    object-fit: cover; /* 保持图片纵横比缩放填充整个容器 */
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+    transition: 1s;
+    transform-style: preserve-3d;
+    /*box-shadow: 0 0 15px rgb(0,0,0);*/
+}
+.数学领域1适配图片2{
+    position: absolute;
+    width: 100%; /* 设置宽度为100% */
+    height: 100%; /* 设置高度为100% */
+    object-fit: contain; /* 保持图片纵横比缩放填充整个容器 */
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    transition: 1s;
+    transform-style: preserve-3d;
+    /*box-shadow: 0 0 15px rgb(0,0,0);*/
+}
+.数学领域1:hover .数学领域1适配图片1{
+    transform: rotateY(-180deg);
+}
+.数学领域1:hover .数学领域1适配图片2{
+    transform: rotateY(0deg);
+}
+
+.数学领域2{
+    position:relative;
+    top:29%;
+    left:34%;
+    transform: translate(-50%, 0); /* 通过平移调整位置 */
+
+    width:200px;
+    height:200px;
+    /* 将整个盒子设置为圆形,隐藏超出圆形的内容 */
+    border-radius: 50%;
+    /*
+    border-radius: 50%;
+    overflow: hidden;
+    */
+    /*box-shadow: 0 0 15px rgb(0,0,0);*/
+    /*border: 1px solid black;*/
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+.数学领域2适配图片1{
+    position: absolute;
+    width: 100%; /* 设置宽度为100% */
+    height: 100%; /* 设置高度为100% */
+    object-fit: cover; /* 保持图片纵横比缩放填充整个容器 */
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+    transition: 1s;
+    transform-style: preserve-3d;
+    /*box-shadow: 0 0 15px rgb(0,0,0);*/
+}
+.数学领域2适配图片2{
+    position: absolute;
+    width: 100%; /* 设置宽度为100% */
+    height: 100%; /* 设置高度为100% */
+    object-fit: contain; /* 保持图片纵横比缩放填充整个容器 */
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    transition: 1s;
+    transform-style: preserve-3d;
+    /*box-shadow: 0 0 15px rgb(0,0,0);*/
+}
+.数学领域2:hover .数学领域2适配图片1{
+    transform: rotateY(-180deg);
+}
+.数学领域2:hover .数学领域2适配图片2{
+    transform: rotateY(0deg);
+}
+
+.数学领域3{
+    position:relative;
+    top:30%;
+    left:50.5%;
+    transform: translate(-50%, 0); /* 通过平移调整位置 */
+
+    width:200px;
+    height:200px;
+    /* 将整个盒子设置为圆形,隐藏超出圆形的内容 */
+    border-radius: 50%;
+    /*
+    border-radius: 50%;
+    overflow: hidden;
+    */
+    /*box-shadow: 0 0 15px rgb(0,0,0);*/
+    /*border: 1px solid black;*/
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+.数学领域3适配图片1{
+    position: absolute;
+    width: 100%; /* 设置宽度为100% */
+    height: 100%; /* 设置高度为100% */
+    object-fit: cover; /* 保持图片纵横比缩放填充整个容器 */
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+    transition: 1s;
+    transform-style: preserve-3d;
+    /*box-shadow: 0 0 15px rgb(0,0,0);*/
+}
+.数学领域3适配图片2{
+    position: absolute;
+    width: 100%; /* 设置宽度为100% */
+    height: 100%; /* 设置高度为100% */
+    object-fit: contain; /* 保持图片纵横比缩放填充整个容器 */
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    transition: 1s;
+    transform-style: preserve-3d;
+    /*box-shadow: 0 0 15px rgb(0,0,0);*/
+}
+.数学领域3:hover .数学领域3适配图片1{
+    transform: rotateY(-180deg);
+}
+.数学领域3:hover .数学领域3适配图片2{
+    transform: rotateY(0deg);
+}
+.数学领域4{
+    position:relative;
+    top:67%;
+    left:-18%;
+    transform: translate(-50%, 0); /* 通过平移调整位置 */
+
+    width:200px;
+    height:200px;
+    /* 将整个盒子设置为圆形,隐藏超出圆形的内容 */
+    border-radius: 50%;
+    /*
+    border-radius: 50%;
+    overflow: hidden;
+    */
+    /*box-shadow: 0 0 15px rgb(0,0,0);*/
+    /*border: 1px solid black;*/
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+.数学领域4适配图片1{
+    position: absolute;
+    width: 100%; /* 设置宽度为100% */
+    height: 100%; /* 设置高度为100% */
+    object-fit: cover; /* 保持图片纵横比缩放填充整个容器 */
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+    transition: 1s;
+    transform-style: preserve-3d;
+    /*box-shadow: 0 0 15px rgb(0,0,0);*/
+}
+.数学领域4适配图片2{
+    position: absolute;
+    width: 100%; /* 设置宽度为100% */
+    height: 100%; /* 设置高度为100% */
+    object-fit: contain; /* 保持图片纵横比缩放填充整个容器 */
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    transition: 1s;
+    transform-style: preserve-3d;
+    /*box-shadow: 0 0 15px rgb(0,0,0);*/
+}
+.数学领域4:hover .数学领域4适配图片1{
+    transform: rotateY(-180deg);
+}
+.数学领域4:hover .数学领域4适配图片2{
+    transform: rotateY(0deg);
+}
+.数学领域5{
+    position:relative;
+    top:65%;
+    left:-4%;
+    transform: translate(-50%, 0); /* 通过平移调整位置 */
+
+    width:200px;
+    height:200px;
+    /* 将整个盒子设置为圆形,隐藏超出圆形的内容 */
+    border-radius: 50%;
+    /*
+    border-radius: 50%;
+    overflow: hidden;
+    */
+    /*box-shadow: 0 0 15px rgb(0,0,0);*/
+    /*border: 1px solid black;*/
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+.数学领域5适配图片1{
+    position: absolute;
+    width: 100%; /* 设置宽度为100% */
+    height: 100%; /* 设置高度为100% */
+    object-fit: contain; /* 保持图片纵横比缩放填充整个容器 */
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+    transition: 1s;
+    transform-style: preserve-3d;
+    /*box-shadow: 0 0 15px rgb(0,0,0);*/
+}
+.数学领域5适配图片2{
+    position: absolute;
+    width: 100%; /* 设置宽度为100% */
+    height: 100%; /* 设置高度为100% */
+    object-fit: contain; /* 保持图片纵横比缩放填充整个容器 */
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    transition: 1s;
+    transform-style: preserve-3d;
+    /*box-shadow: 0 0 15px rgb(0,0,0);*/
+}
+.数学领域5:hover .数学领域5适配图片1{
+    transform: rotateY(-180deg);
+}
+.数学领域5:hover .数学领域5适配图片2{
+    transform: rotateY(0deg);
+}
+.数学领域6{
+    position:relative;
+    top:67%;
+    left:12%;
+    transform: translate(-50%, 0); /* 通过平移调整位置 */
+
+    width:200px;
+    height:200px;
+    /* 将整个盒子设置为圆形,隐藏超出圆形的内容 */
+    border-radius: 50%;
+    /*
+    border-radius: 50%;
+    overflow: hidden;
+    */
+    /*box-shadow: 0 0 15px rgb(0,0,0);*/
+    /*border: 1px solid black;*/
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+.数学领域6适配图片1{
+    position: absolute;
+    width: 100%; /* 设置宽度为100% */
+    height: 100%; /* 设置高度为100% */
+    object-fit: cover; /* 保持图片纵横比缩放填充整个容器 */
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+    transition: 1s;
+    transform-style: preserve-3d;
+    /*box-shadow: 0 0 15px rgb(0,0,0);*/
+}
+.数学领域6适配图片2{
+    position: absolute;
+    width: 100%; /* 设置宽度为100% */
+    height: 100%; /* 设置高度为100% */
+    object-fit: contain; /* 保持图片纵横比缩放填充整个容器 */
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    transition: 1s;
+    transform-style: preserve-3d;
+    /*box-shadow: 0 0 15px rgb(0,0,0);*/
+}
+.数学领域6:hover .数学领域6适配图片1{
+    transform: rotateY(-180deg);
+}
+.数学领域6:hover .数学领域6适配图片2{
+    transform: rotateY(0deg);
+}
