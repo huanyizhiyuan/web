@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/和弦文本框配置.css" />
+    <script src="../timeline/js/echarts.min.js"></script>
+    <script src="./high_js/highcharts.js"></script>
+    <script src="./high_js/sankey.js"></script>
+    <script src="./high_js/grid-light.js"></script>
+
+    <style>
+      body{
+        background: url("./img/math_img/背景图片3.png");
+        background-size:cover;
+      }
+      .作者1{
+        color:#8A1874;
+        font-size:1.6em;
+      }
+      .作者2{
+        color:#5698C3;
+        font-size:1.6em;
+      }
+      .内容变化{
+        color:#83BFBB;
+        font-size:1.55em;
+      }
+      .biaoti {
+        /* width: 90%;
+        height: 25%; */
+        font-family: "主标题-二号", sans-serif;
+        font-size: 2em;
+        padding: 10px;
+        box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px,
+          rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+      }
+      .neirong {
+        /* width: 90%;
+        height: 75%; */
+        font-family: "三级加粗-正文-三号", sans-serif;
+        font-size: 1.5em;
+        text-indent: 2em;
+        padding: 5px;
+      }
+      .container_graph_class1 {
+        left: 2px;
+        top: 60px;
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        z-index: -1;
+      }
+      .container_graph_class2 {
+        position: absolute;
+        z-index: 1;
+      }
+      .container_graph_class3 {
+        position: absolute;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+  <header class="home_menu">
+    <img src="./img/tbtbtb.png" class="logo" alt="logo">
+    <nav>
+      <ul class="nav_links">
+        <li class="nav_li" style="background: url('./img/math_img/header边框.png');">
+          <a href="http://localhost:63342/wywywywy/project/数学家_时间轴.html">前赴后继</a>
+        </li>
+        <li class="nav_li" style="background: url('./img/math_img/header边框.png');">
+          <a href="http://localhost:63342/wywywywy/project/%E5%92%8C%E5%BC%A6%E5%9B%BE.html">千丝万缕</a>
+        </li>
+        <li class="nav_li" style="background: url('./img/math_img/header边框.png');">
+          <a href="http://localhost:5173/#/Map">五湖四海</a>
+        </li>
+        <li class="nav_li" style="background: url('./img/math_img/header边框.png');">
+          <a href="http://localhost:63342/wywywywy/project/index.html">返回首页</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="container"></div>
+    <div id="container_text">
+      <div style=" display: flex;flex-direction: column;justify-content: center;align-items: center;">
+        <div class="biaoti">锦绣承绪</div>
+        <div class="neirong">
+          <p>
+            中华大地的数学家们，并非孑然一身地在求知之路上探寻。他们深谙传承之精髓，汲取着历代先贤的智慧甘泉，
+            巧妙融合自身的独到见解与探索，铺展开一条崭新的思维通途。正是这样源源不断的学识积累和勇往直前的创新精神，
+            共同织就了一幅绚烂至极、辉煌无比的中华数学史诗画卷！
+          </p>
+          <p style="color: rgb(76, 145, 145)">
+            [点击图中数学家之间相连线条即可显示两者数学研究方面的联系]
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="container_graph" style="width: 600px; height: 300px">
+      <div id="header_graph_和弦" style="width: 600px; height: 300px"></div>
+<!--      <img src="./img/math_img/饼图背景.png" alt="background-image" class="container_graph_class1"/>-->
+    </div>
+    <script src="./high_js/dependency-wheel.js"></script>
+    <script type="text/javascript" src="js/和弦图.js"></script>
+    <script type="text/javascript" src="js/和弦图配套互动.js"></script>
+  </body>
+</html>

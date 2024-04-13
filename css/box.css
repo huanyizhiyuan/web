@@ -1,0 +1,70 @@
+/*id选择器*/
+#box {
+  /* 设置盒子模型的位置 */
+  position: relative; /* 默认值，元素按照正常的文档流进行定位 */
+
+  /* 如果你想使用绝对定位，可以设置为 position: absolute;
+       然后使用 top, right, bottom, left 属性来定位 */
+  top: 400px;
+  /*right: 0;*/
+  /*bottom: 0;*/
+  /*left: 0;*/
+
+  /*width:200px;*/
+  height: 200px;
+
+  /* 设置盒子的内边距和外边距 */
+  padding: 10px; /* 内边距 */
+  margin: 15px; /* 外边距 */
+
+  /* 设置盒子的边框 */
+  /* border: 1px solid black; /* 边框宽度为1像素，实线，黑色 */
+  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+
+  /* 设置盒子的背景色 */
+  /*background-color: #f2f2f2; /* 背景色为浅灰色 */
+  /*透明*/
+  /*background-color: transparent;*/
+
+  /* 设置其他属性 */
+  display: block; /* 默认为 block，表示盒子为块级元素 */
+  overflow: hidden; /* 隐藏溢出盒子的内容 */
+  box-sizing: border-box; /* 边框和内边距包含在宽度和高度内 */
+  /* 你还可以设置其他属性，如字体、颜色、阴影等 */
+}
+
+#box2 {
+  position: relative; /* 默认值，元素按照正常的文档流进行定位 */
+
+  width: 100px;
+  height: 50px;
+
+  background-color: transparent;
+  /* 设置盒子的边框 */
+  border: 2px solid red; /* 边框宽度为1像素，实线，红色 */
+}
+/*box盒子属性*/
+#tooltip-container {
+  position: fixed; /* 默认值，元素按照正常的文档流进行定位 */
+  top: 170px;
+  /* 设置盒子的内边距和外边距 */
+  padding: 10px; /* 内边距 */
+  margin: 15px; /* 外边距 */
+  width: 40%;
+  height: 200px;
+  border: 2px solid red; /* 边框宽度为1像素，实线，红色 */
+  display: block;
+  content: "这是一个盒子";
+}
+/*content内容属性*/
+#tooltip-content {
+  position: absolute;
+  border: 2px solid; /* 边框宽度为1像素，实线，红色 */
+  /* 设置盒子的内边距和外边距 */
+  padding: 1%; /* 内边距 */
+  margin: 1%; /* 外边距 */
+  width: 90%;
+  height: 40%;
+}

@@ -1,0 +1,46 @@
+* {
+  /*box-sizing:border-box;*/
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  /* 设置背景图片的透明度 */
+  /* 确保背景色为透明 */
+  /*background: transparent url('../img/背景2.png') no-repeat fixed center center;*/
+  /* background: url('../img/背景2.png') no-repeat fixed center center; */
+  /*opacity: 0.5; !* 设置不透明度为 0.5 *!*/
+  /* 设置半透明背景色 */
+  /*background-color: #e4e0d6a8;*/
+  /* 让背景图和背景色进行混合 */
+  /* background-blend-mode: overlay; */
+  /*兼容浏览器版本*/
+  /*background-repeat: no-repeat;*/
+  /*background-size: cover;*/
+  /*background-position: center;*/
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* -------------------------------- 
+
+字体
+
+-------------------------------- */
+@font-face {
+  font-family: "三级加粗-正文-三号"; /* 自定义字体的名字 */
+  src: url("../font/三级加粗-正文-三号-方正仿宋_GBK.TTF") format("truetype"); /* 字体文件的路径和格式 */
+}
+@font-face {
+  font-family: "一级-三号"; /* 自定义字体的名字 */
+  src: url("../font/一级-三号-方正黑体_GBK.TTF") format("truetype"); /* 字体文件的路径和格式 */
+}
+@font-face {
+  font-family: "主标题-二号"; /* 自定义字体的名字 */
+  src: url("../font/主标题_二号_方正小标宋_GBK.TTF") format("truetype"); /* 字体文件的路径和格式 */
+}
+@font-face {
+  font-family: "主标题备注-二级-三号"; /* 自定义字体的名字 */
+  src: url("../font/主标题备注-二级-三号-方正楷体_GBK.TTF") format("truetype"); /* 字体文件的路径和格式 */
+}

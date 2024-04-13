@@ -1,0 +1,106 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+@font-face {
+  font-family: "Zhi Mang Xing";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../font/Zhi_Mang_Xing/ZhiMangXing-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Ma_Shan_Zheng";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../font/Ma_Shan_Zheng/MaShanZheng-Regular.ttf) format("truetype");
+}
+#container {
+  position: relative;
+  left: 5%;
+  top: 125px;
+  /*min-height:200px;*/
+  /*max-height:400px;*/
+  height: 600px;
+  min-width: 300px;
+  max-width: 600px;
+  background: url("../img/math_img/背景图片4.png");
+
+  border-radius: 20%;
+  /*height: 500px;*/
+  /*margin: 1px auto;*/
+  /* border: 1px solid silver; */
+  /*box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,*/
+  /*  rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;*/
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+}
+#container_text {
+  position: absolute;
+  left: 53%;
+  top: 16%;
+  width: 600px;
+  min-height: 300px;
+  min-width: 300px;
+  max-width: 600px;
+  background: url("../img/math_img/背景图片4.png");
+  border-radius: 10%;
+  /* border: 1px solid silver; */
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+#container_graph {
+  position: absolute;
+  left: 53%;
+  top: 60%;
+  width: 600px;
+  min-height: 300px;
+  min-width: 300px;
+  max-width: 600px;
+  background: url("../img/math_img/背景图片4.png");
+  border-radius: 20%;
+  /* border: 1px solid silver; */
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.header_text_和弦 {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  padding: 2.5%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  border: 1px solid red;
+}
+.标题栏 {
+  /*字体*/
+  font-family: "Zhi Mang Xing", cursive;
+  font-weight: 420;
+  font-size: 38px; /* 设置字体大小为 20 像素 */
+  font-style: normal;
+  line-height: 1.6; /* 设置行距为原字体大小的 1.6 倍 */
+  /*盒子设置*/
+  position: absolute;
+  width: 95%;
+  height: 20%;
+  margin-right: 5%;
+  border: 1px solid darkgreen;
+  /*文本间距描写：*/
+  text-align: center;
+}
+.内容栏 {
+  /*字体*/
+  font-family: "Ma_Shan_Zheng", cursive;
+  font-weight: 400;
+  font-size: 20px; /* 设置字体大小为 20 像素 */
+  font-style: normal;
+  line-height: 1.6; /* 设置行距为原字体大小的 1.6 倍 */
+  /*盒子设置*/
+  top: 25%;
+  position: absolute;
+  width: 95%;
+  height: 75%;
+  margin-right: 5%;
+  border: 1px solid deeppink;
+  /*文本间距描写：*/
+  text-align: center;
+}
